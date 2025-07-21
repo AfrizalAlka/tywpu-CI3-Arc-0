@@ -101,6 +101,11 @@ class Auth extends CI_Controller {
 		}
 	}
 
+	public function forgetPassword()
+	{
+		$this->load->view('auth/forgetpassword');
+	}
+
 	public function logout()
 	{
 		$this->session->unset_userdata('email');
