@@ -23,7 +23,7 @@
             <button type="submit" class="btn btn-primary">Kirim Link Reset</button>
         </form>
         <p>
-            <a href="<?= base_url('auth/login'); ?>">Kembali ke Login</a>
+            <a href="<?= base_url('auth'); ?>">Kembali ke Login</a>
         </p>
     </div>
 </body>
