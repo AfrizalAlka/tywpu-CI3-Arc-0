@@ -1,6 +1,4 @@
-
-
-                <!-- Begin Page Content -->
+            <!-- Begin Page Content -->
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
@@ -15,7 +13,11 @@
                                 <div class="card-body">
                                     <h5 class="card-title"><?= $user['name']; ?></h5>
                                     <p class="card-text"><?= $user['email']; ?></p>
-                                    <p class="card-text"><small class="text-body-secondary">Memeber since <?= date($user['date_created']); ?></small></p>
+                                    <p class="card-text">
+                                        <small class="text-body-secondary">
+                                            Member since <?= substr($user['date_created'], 0, 10); ?>
+                                        </small>
+                                    </p>
                                 </div>
                             </div>
                         </div>
