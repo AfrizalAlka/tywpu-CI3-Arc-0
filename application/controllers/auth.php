@@ -18,7 +18,7 @@ class Auth extends CI_Controller {
 		$this->load->database();
 	}
 
-	public function login()
+	public function index()
 	{
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
 		$this->form_validation->set_rules('password', 'Password', 'required|trim');
@@ -55,16 +55,16 @@ class Auth extends CI_Controller {
 					}
 				} else {
 					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password!</div>');
-					redirect('auth/login');
+					redirect('auth');
 				}
 			} else {
 				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">This email has not been activated!</div>');
-				redirect('auth/login');
+				redirect('auth');
 			}
 
 		} else {
 			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered!</div>');
-			redirect('auth/login');
+			redirect('auth');
 		}
 	}
 
@@ -97,7 +97,7 @@ class Auth extends CI_Controller {
 			];
 			$this->db->insert('user', $data);
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulations! Your account has been created. Please login.</div>');
-			redirect('auth/login');
+			redirect('auth');
 		}
 	}
 
@@ -112,6 +112,11 @@ class Auth extends CI_Controller {
 		$this->session->unset_userdata('role_id');
 
 		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You have been logged out!</div>');
-		redirect('auth/login');
+		redirect('auth');
+	}
+
+	public function blocked()
+	{
+		$this->load->view('auth/blocked');
 	}
 }
