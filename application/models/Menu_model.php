@@ -3,9 +3,6 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 /**
  * @property CI_DB $db
- * @property CI_Session $session
- * @property CI_Form_validation $form_validation
- * @property CI_input $input
  */
 
 class Menu_model extends CI_Model
