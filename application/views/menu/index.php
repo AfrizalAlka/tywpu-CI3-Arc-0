@@ -28,8 +28,8 @@
                                             <th scope="row"><?= $i; ?></th>
                                             <td><?= $m['menu']; ?></td>
                                             <td>
-                                                <a href="" class="badge badge-success">edit</a>
-                                                <a href="" class="badge badge-danger">delete</a>
+                                                <a href="<?= base_url('menu/editmenu/') . $m['id']; ?>" class="badge badge-success">edit</a>
+                                                <a href="<?= base_url('menu/deletemenu/' . $m['id']); ?>" class="badge badge-danger">delete</a>
                                             </td>
                                         </tr>
                                         <?php $i++; ?>
