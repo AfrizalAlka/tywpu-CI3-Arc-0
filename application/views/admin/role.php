@@ -29,8 +29,8 @@
                                             <td><?= $r['role']; ?></td>
                                             <td>
                                                 <a href="<?= base_url('admin/roleaccess/') . $r['id']; ?>" class="badge badge-warning">access</a>
-                                                <a href="" class="badge badge-success">edit</a>
-                                                <a href="" class="badge badge-danger">delete</a>
+                                                <a href="<?= base_url('admin/editrole/') . $r['id']; ?>" class="badge badge-success">edit</a>
+                                                <a href="<?= base_url('admin/deleterole/') . $r['id']; ?>" class="badge badge-danger">delete</a>
                                             </td>
                                         </tr>
                                         <?php $i++; ?>

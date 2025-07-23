@@ -6,6 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property CI_DB $db
  * @property CI_Session $session
  * @property CI_Input $input
+ * @property CI_Form_validation $form_validation
  */
 
 class Admin extends CI_Controller{
@@ -35,11 +36,19 @@ class Admin extends CI_Controller{
 
         $data['role'] = $this->db->get('user_role')->result_array();
 
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/role', $data);
-        $this->load->view('templates/footer');
+        $this->form_validation->set_rules('role', 'Role', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/role', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->db->insert('user_role', ['role' => $this->input->post('role')]);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">New role added!</div>');
+            redirect('admin/role');
+        }
     }
 
     public function roleAccess($role_id){
@@ -77,5 +86,15 @@ class Admin extends CI_Controller{
         }
 
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Access changed!</div>');
+    }
+
+    public function deleterole($id){
+        $this->db->delete('user_role', ['id' => $id]);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Role deleted!</div>');
+        redirect('admin/role');
+    }
+
+    public function editrole($id){
+
     }
 }
