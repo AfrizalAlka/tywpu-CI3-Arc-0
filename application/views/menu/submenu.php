@@ -37,11 +37,11 @@
                                             <td><?= $sm['title']; ?></td>
                                             <td><?= $sm['menu']; ?></td>
                                             <td><?= $sm['url']; ?></td>
-                                            <td><?= $sm['icon']; ?></td>
+                                            <td><i class="<?= $sm['icon']; ?>"></i></td>
                                             <td><?= $sm['is_active']; ?></td>
                                             <td>
                                                 <a href="<?= base_url('menu/editsubmenu/') . $sm['id']; ?>" class="badge badge-success">edit</a>
-                                                <a href="<?= base_url('menu/deletesubmenu/' . $sm['id']); ?>" class="badge badge-danger">delete</a>
+                                                <a href="<?= base_url('menu/deletesubmenu/' . $sm['id']); ?>" class="badge badge-danger" onclick="return confirm('Are you sure you want to delete it?');">delete</a>
                                             </td>
                                         </tr>
                                         <?php $i++; ?>
